@@ -1,10 +1,8 @@
 <?php
 
-namespace Ambta\DoctrineEncryptBundle\Command;
+namespace IntegralService\DoctrineEncryptBundle\Command;
 
-use Ambta\DoctrineEncryptBundle\DependencyInjection\DoctrineEncryptExtension;
-use Doctrine\Common\Annotations\AnnotationReader;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use IntegralService\DoctrineEncryptBundle\DependencyInjection\DoctrineEncryptExtension;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -55,7 +53,7 @@ class DoctrineDecryptDatabaseCommand extends AbstractCommand
                 } else {
                     $output->writeln('\nGiven encryptor does not exists');
                     $output->writeln('Supported encryptors: ' . implode(', ', array_keys($supportedExtensions)));
-                    $output->writeln('You can also define your own class. (example: Ambta\DoctrineEncryptBundle\Encryptors\Rijndael128Encryptor)');
+                    $output->writeln('You can also define your own class. (example: IntegralService\DoctrineEncryptBundle\Encryptors\Rijndael128Encryptor)');
                     return;
                 }
             }

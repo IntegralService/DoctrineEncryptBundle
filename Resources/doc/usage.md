@@ -1,4 +1,4 @@
-#Usage
+# Usage
 
 Lets imagine that we are storing some private data in our database and we don't want 
 to somebody can see it even if he will get raw database on his hands in some dirty way. 
@@ -20,7 +20,7 @@ namespace Acme\DemoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 // importing @Encrypted annotation
-use Ambta\DoctrineEncryptBundle\Configuration\Encrypted;
+use IntegralService\DoctrineEncryptBundle\Configuration\Encrypted;
 
 /**
  * @ORM\Entity
@@ -43,11 +43,11 @@ class User {
 ```
 
 It is as simple as that, the field will now be encrypted the first time the users entity gets edited.
-We keep an <ENC> prefix to check if data is encrypted or not so, unencrypted data will still work even if the field is encrypted.
+We keep an <ENC> suffix to check if data is encrypted or not so, unencrypted data will still work even if the field is encrypted.
 
 ## Console commands
 
 There are some console commands that can help you encrypt your existing database or change encryption methods.
 Read more about the database encryption commands provided with this bundle.
 
-#### [Console commands](https://github.com/ambta/DoctrineEncryptBundle/blob/master/Resources/doc/commands.md)
+[Console commands](https://github.com/integralservice/DoctrineEncryptBundle/blob/master/Resources/doc/commands.md)

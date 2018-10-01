@@ -1,6 +1,6 @@
 <?php
 
-namespace Ambta\DoctrineEncryptBundle\Subscribers;
+namespace IntegralService\DoctrineEncryptBundle\Subscribers;
 
 use Doctrine\ORM\Event\PostFlushEventArgs;
 use Doctrine\ORM\Events;
@@ -11,7 +11,7 @@ use Doctrine\ORM\Event\PreFlushEventArgs;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\Util\ClassUtils;
 use \ReflectionClass;
-use Ambta\DoctrineEncryptBundle\Encryptors\EncryptorInterface;
+use IntegralService\DoctrineEncryptBundle\Encryptors\EncryptorInterface;
 
 /**
  * Doctrine event subscriber which encrypt/decrypt entities
@@ -21,12 +21,12 @@ class DoctrineEncryptSubscriber implements EventSubscriber {
     /**
      * Encryptor interface namespace
      */
-    const ENCRYPTOR_INTERFACE_NS = 'Ambta\DoctrineEncryptBundle\Encryptors\EncryptorInterface';
+    const ENCRYPTOR_INTERFACE_NS = 'IntegralService\DoctrineEncryptBundle\Encryptors\EncryptorInterface';
 
     /**
      * Encrypted annotation full name
      */
-    const ENCRYPTED_ANN_NAME = 'Ambta\DoctrineEncryptBundle\Configuration\Encrypted';
+    const ENCRYPTED_ANN_NAME = 'IntegralService\DoctrineEncryptBundle\Configuration\Encrypted';
 
     /**
      * Encryptor
@@ -285,7 +285,7 @@ class DoctrineEncryptSubscriber implements EventSubscriber {
                                 if(!is_null($getInformation) and !empty($getInformation)) {
                                     if(substr($entity->$getter(), -5) != "<ENC>") {
                                         $this->encryptCounter++;
-                                        $currentPropValue = $this->encryptor->encrypt($entity->$getter());
+                                        $currentPropValue = $this->encryptor->encrypt($entity->$getter())."<ENC>";
                                         $entity->$setter($currentPropValue);
                                     }
                                 }

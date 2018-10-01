@@ -25,7 +25,7 @@ DoctrineEncrypt\Entity\UserDetail has 13 properties which are encrypted.
 You can use the comment `doctrine:encrypt:database [encryptor]` to encrypt the current database.
 
 * Optional parameter [encryptor]
-    * An encryptor provided by the bundle (rijndael256 or rijndael128) or your own [encryption class](https://github.com/ambta/DoctrineEncryptBundle/blob/master/Resources/doc/custom_encryptor.md).
+    * An encryptor provided by the bundle (AEADxChaCha20Poly1305) or your own [encryption class](https://github.com/integralservice/DoctrineEncryptBundle/blob/master/Resources/doc/custom_encryptor.md).
     * Default: Your encryptor set in the configuration file or the default encryption class when not set in the configuration file
 
 ```
@@ -35,11 +35,11 @@ $ php app/console doctrine:encrypt:database
 or you can provide an encryptor (optional).
 
 ```
-$ php app/console doctrine:encrypt:database rijndael256
+$ php app/console doctrine:encrypt:database AEADxChaCha20Poly1305
 ```
 
 ```
-$ php app/console doctrine:encrypt:database \Ambta\DoctrineEncryptBundle\Encryptors\Rijndael256Encryptor
+$ php app/console doctrine:encrypt:database \IntegralService\DoctrineEncryptBundle\Encryptors\AEADxChaCha20Poly1305Encryptor
 ```
 
 This command will return the amount of values encrypted in the database.
@@ -54,7 +54,7 @@ Encryption finished values encrypted: 203 values.
 You can use the comment `doctrine:decrypt:database [encryptor]` to decrypt the current database.
 
 * Optional parameter [encryptor]
-    * An encryptor provided by the bundle (rijndael256 or rijndael128) or your own [encryption class](https://github.com/ambta/DoctrineEncryptBundle/blob/master/Resources/doc/custom_encryptor.md).
+    * An encryptor provided by the bundle (AEADxChaCha20Poly1305) or your own [encryption class](https://github.com/integralservice/DoctrineEncryptBundle/blob/master/Resources/doc/custom_encryptor.md).
     * Default: Your encryptor set in the configuration file or the default encryption class when not set in the configuration file
 
 ```
@@ -64,11 +64,11 @@ $ php app/console doctrine:encrypt:database
 or you can provide an encryptor (optional).
 
 ```
-$ php app/console doctrine:encrypt:database rijndael256
+$ php app/console doctrine:encrypt:database AEADxChaCha20Poly1305
 ```
 
 ```
-$ php app/console doctrine:encrypt:database \Ambta\DoctrineEncryptBundle\Encryptors\Rijndael256Encryptor
+$ php app/console doctrine:encrypt:database \IntegralService\DoctrineEncryptBundle\Encryptors\AEADxChaCha20Poly1305Encryptor
 ```
 
 This command will return the amount of entities and the amount of values decrypted in the database.
@@ -81,4 +81,4 @@ Decryption finished entities found: 26, decrypted 195 values.
 
 You may want to use your own encryption class learn how here:
 
-#### [Custom encryption class](https://github.com/ambta/DoctrineEncryptBundle/blob/master/Resources/doc/custom_encryptor.md)
+[Custom encryption class](https://github.com/integralservice/DoctrineEncryptBundle/blob/master/Resources/doc/custom_encryptor.md)

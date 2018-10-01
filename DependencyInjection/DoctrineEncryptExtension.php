@@ -1,6 +1,6 @@
 <?php
 
-namespace Ambta\DoctrineEncryptBundle\DependencyInjection;
+namespace IntegralService\DoctrineEncryptBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
@@ -16,8 +16,9 @@ use Symfony\Component\DependencyInjection\Loader;
  */
 class DoctrineEncryptExtension extends Extension {
 
-    public static $supportedEncryptorClasses = array('rijndael256' => 'Ambta\DoctrineEncryptBundle\Encryptors\Rijndael256Encryptor',
-                                                    'rijndael128'=> 'Ambta\DoctrineEncryptBundle\Encryptors\Rijndael128Encryptor');
+    public static $supportedEncryptorClasses = [
+        'AEADxChaCha20Poly1305' => 'IntegralService\DoctrineEncryptBundle\Encryptors\AEADxChaCha20Poly1305Encryptor'
+    ];
 
     /**
      * {@inheritDoc}
@@ -48,18 +49,17 @@ class DoctrineEncryptExtension extends Extension {
             if(isset($config['encryptor']) and isset($supportedEncryptorClasses[$config['encryptor']])) {
                 $config['encryptor_class'] = $supportedEncryptorClasses[$config['encryptor']];
             } else {
-                $config['encryptor_class'] = $supportedEncryptorClasses['rijndael256'];
+                $config['encryptor_class'] = $supportedEncryptorClasses['AEADxChaCha20Poly1305'];
             }
         }
 
         //Set parameters
-        $container->setParameter('ambta_doctrine_encrypt.encryptor_class_name', $config['encryptor_class']);
-        $container->setParameter('ambta_doctrine_encrypt.secret_key', $config['secret_key']);
+        $container->setParameter('integralservice_doctrine_encrypt.encryptor_class_name', $config['encryptor_class']);
+        $container->setParameter('integralservice_doctrine_encrypt.secret_key', $config['secret_key']);
 
         //Load service file
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load(sprintf('%s.yml', $services['orm']));
-
     }
 
     /**
@@ -68,6 +68,6 @@ class DoctrineEncryptExtension extends Extension {
      * @return string
      */
     public function getAlias() {
-        return 'ambta_doctrine_encrypt';
+        return 'integralservice_doctrine_encrypt';
     }
 }

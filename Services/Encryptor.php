@@ -6,11 +6,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Ambta\DoctrineEncryptBundle\Services;
+namespace IntegralService\DoctrineEncryptBundle\Services;
 
 class Encryptor
 {
-    /** @var \Ambta\DoctrineEncryptBundle\Encryptors\EncryptorInterface */
+    /** @var \IntegralService\DoctrineEncryptBundle\Encryptors\EncryptorInterface */
     protected $encryptor;
 
     public function __construct($encryptName, $key)

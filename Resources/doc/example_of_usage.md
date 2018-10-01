@@ -1,4 +1,4 @@
-#Example Of Usage
+# Example Of Usage
 
 Lets imagine that we are storing some private data in our database and we don't want 
 to somebody can see it even if he will get raw database on his hands in some dirty way. 
@@ -12,7 +12,7 @@ these things will be happen automatically.
 For example, we have some user entity with two fields which we want to encode in database.
 We must import annotation `@Encrypted` first and then mark fields with it.
 
-###Doctrine Entity
+### Doctrine Entity
 
 ```php
 namespace Acme\DemoBundle\Entity;
@@ -20,7 +20,7 @@ namespace Acme\DemoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 // importing @Encrypted annotation
-use Ambta\DoctrineEncryptBundle\Configuration\Encrypted;
+use IntegralService\DoctrineEncryptBundle\Configuration\Encrypted;
 
 /**
  * @ORM\Entity
@@ -67,7 +67,7 @@ class UserV {
 }
 ```
 
-###Fixtures
+### Fixtures
 
 ```php
 
@@ -93,7 +93,7 @@ class LoadUserData implements FixtureInterface
 }
 ```
 
-###Controller
+### Controller
 
 ```php
 
@@ -111,14 +111,14 @@ use Acme\DemoBundle\Entity\UserV;
 class DemoController extends Controller
 {
     /**
-     * @Route("/show-user/{id}", name="_ambta_decrypt_test", requirements={"id" = "\d+"})
+     * @Route("/show-user/{id}", name="_integralservice_decrypt_test", requirements={"id" = "\d+"})
      * @Template
      */
     public function getUserAction(UserV $user) {}
 }
 ```
 
-###Template
+### Template
 
 ```twig
 <div>Common info: {{ user.lastName ~  ' ' ~ user.firstName }}</div>
@@ -147,6 +147,6 @@ credit_card_number  | 1Y+Yzq6/dDXvtnYHhTyadWfIm6xhGLxuKL2oSuxuzL4=
 
 So our information is encoded and all okay.
 
-###Requirements
+### Requirements
 
-You need `DoctrineFixturesBundle` and `php-mcrypt` extension for this example
+You need `DoctrineFixturesBundle` extension for this example

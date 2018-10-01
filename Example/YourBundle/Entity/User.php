@@ -2,7 +2,7 @@
 namespace YourBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Ambta\DoctrineEncryptBundle\Configuration\Encrypted;
+use IntegralService\DoctrineEncryptBundle\Configuration\Encrypted;
 
 /**
  * This is an user entity which contains user information
