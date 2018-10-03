@@ -1,0 +1,19 @@
+language: php
+
+php:
+    - '7.2'
+
+before_install:
+    # Manually compile the libsodium library
+    - git clone -b stable https://github.com/jedisct1/libsodium.git
+    - cd libsodium && sudo ./configure && sudo make check && sudo make install && cd ..
+    - '[[ "$TRAVIS_PHP_VERSION" == "nightly" ]] || phpenv config-rm xdebug.ini'
+
+install:
+    # Manually install libsodium, because the TravicCi image doesn't provide PHP7.2 with libsodium
+    - pecl install libsodium
+    - echo "extension=sodium.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+    - composer install
+
+script:
+    - ./vendor/bin/phpunit

@@ -29,7 +29,7 @@ class AEADxChaCha20Poly1305Encryptor implements EncryptorInterface
     public function encrypt($data): string
     {
         $nonce = random_bytes(24);
-        $encrypted = sodium_crypto_aead_xchacha20poly1305_ietf_encrypt(
+        $encrypted = \sodium_crypto_aead_xchacha20poly1305_ietf_encrypt(
             $data,
             $nonce,
             $nonce,
@@ -50,7 +50,7 @@ class AEADxChaCha20Poly1305Encryptor implements EncryptorInterface
         $nonce = mb_substr($decodedData, 0, 24, '8bit');
         $ciphertext = mb_substr($decodedData, 24, null, '8bit');
 
-        $plaintext = sodium_crypto_aead_xchacha20poly1305_ietf_decrypt(
+        $plaintext = \sodium_crypto_aead_xchacha20poly1305_ietf_decrypt(
             $ciphertext,
             $nonce,
             $nonce,
