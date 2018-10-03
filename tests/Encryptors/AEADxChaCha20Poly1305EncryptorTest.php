@@ -1,5 +1,7 @@
 <?php
 
+use IntegralService\DoctrineEncryptBundle\Encryptors\AEADxChaCha20Poly1305Encryptor;
+
 /**
  * AEADxChaCha20Poly1305EncryptorTest
  *
@@ -7,12 +9,20 @@
  */
 class AEADxChaCha20Poly1305EncryptorTest extends PHPUnit\Framework\TestCase
 {
+
+    /**
+     * Test string encryption with AEADxChaCha20Poly1305Encryptor
+     *
+     * We encrypt a string and test that the result is different from
+     * the original string. Then, the encrypted string is descrypted and
+     * compared to the original string: the must be equal
+     */
     public function testEncryptAndDecrypt()
     {
         $testString = "This string will be encrypted and then decrypted to test that the encryptor works properly";
         $secretKey = "THISISOURSECRETKEYANDITIS32BITS!";
 
-        $encryptor = new \IntegralService\DoctrineEncryptBundle\Encryptors\AEADxChaCha20Poly1305Encryptor($secretKey);
+        $encryptor = new AEADxChaCha20Poly1305Encryptor($secretKey);
 
         $encryptedString = $encryptor->encrypt($testString);
 
