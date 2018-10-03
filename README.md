@@ -1,6 +1,10 @@
 # DoctrineEncryptBundle
 
 [![Build Status](https://travis-ci.com/IntegralService/DoctrineEncryptBundle.svg?branch=master)](https://travis-ci.com/IntegralService/DoctrineEncryptBundle)
+[![Latest Stable Version](https://poser.pugx.org/integralservice/doctrine-encrypt-bundle/v/stable)](https://packagist.org/packages/integralservice/doctrine-encrypt-bundle)
+[![Latest Unstable Version](https://poser.pugx.org/integralservice/doctrine-encrypt-bundle/v/unstable)](https://packagist.org/packages/integralservice/doctrine-encrypt-bundle)
+![PHP from Packagist](https://img.shields.io/packagist/php-v/integralservice/doctrine-encrypt-bundle.svg)
+[![License](https://poser.pugx.org/integralservice/doctrine-encrypt-bundle/license)](https://packagist.org/packages/integralservice/doctrine-encrypt-bundle)
 
 Bundle allows to create doctrine entities with fields that will be protected with 
 help of some encryption algorithm in database and it will be clearly for developer, because bundle is uses doctrine life cycle events
