@@ -20,7 +20,12 @@
         }
     ],
     "require-dev": {
-        "phpunit/phpunit": "^7.3",
-        "symfony/phpunit-bridge": "^4.1"
-    }
+        "integralservice/behatcontext": "dev-master"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/IntegralService/BehatContext"
+        }
+    ]
 }
